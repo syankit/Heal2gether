@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:heal2gether/gobal.dart';
 import 'package:heal2gether/screens/blog_write.dart';
+import 'package:heal2gether/screens/contact.dart';
 import 'package:heal2gether/screens/login.dart';
 import 'package:heal2gether/widgets/blogcard.dart';
 import 'package:heal2gether/widgets/bloglist.dart';
@@ -22,6 +23,50 @@ class _BlogPageState extends State<BlogPage> {
   void dispose() {
     _search.dispose();
     super.dispose();
+  }
+
+  void _showSettingsDialog() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.2,
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              ListTile(
+                title: Text(
+                  'Personal Info',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromARGB(255, 0, 10, 150),
+                  ),
+                ),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text(
+                  'Contact Us',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromARGB(255, 0, 10, 150),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => ContactUsPage(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -46,12 +91,13 @@ class _BlogPageState extends State<BlogPage> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.settings,
-                color: Color.fromARGB(255, 255, 255, 255),
-                size: 30,
-              )),
+            onPressed: _showSettingsDialog,
+            icon: Icon(
+              Icons.settings,
+              color: Color.fromARGB(255, 255, 255, 255),
+              size: 30,
+            ),
+          ),
         ],
       ),
       body: Container(

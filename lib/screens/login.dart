@@ -59,139 +59,142 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 34, 16, 139),
       body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(20),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Container(),
-                flex: 2,
-              ),
-              //img
-              Container(
-                height: 350,
-                child: Image(image: AssetImage("assets/logo.gif")),
-              ),
-              const SizedBox(
-                height: 0,
-              ),
-              //email
-              const SizedBox(
-                height: 24,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter your email',
-                  hintStyle: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w300,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                    borderSide: BorderSide(color: Colors.white70, width: 20.0),
-                  ),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(20),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Container(),
+                  flex: 2,
                 ),
-                keyboardType: TextInputType.emailAddress,
-                controller: _emailController,
-                style: TextStyle(color: Colors.white),
-              ),
-              //password
-              const SizedBox(
-                height: 24,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter your password',
-                  hintStyle: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w300,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                      vertical: 12.0,
-                      horizontal: 16.0), // Adjust the padding as needed
+                //img
+                Container(
+                  height: 350,
+                  child: Image(image: AssetImage("assets/logo.gif")),
                 ),
-                keyboardType: TextInputType.visiblePassword,
-                controller: _passwordController,
-                style: TextStyle(color: Colors.white),
-              ),
-              /*TextFieldInput(
+                const SizedBox(
+                  height: 0,
+                ),
+                //email
+                const SizedBox(
+                  height: 24,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter your email',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w300,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      borderSide:
+                          BorderSide(color: Colors.white70, width: 20.0),
+                    ),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  controller: _emailController,
+                  style: TextStyle(color: Colors.white),
+                ),
+                //password
+                const SizedBox(
+                  height: 24,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter your password',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w300,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    contentPadding: EdgeInsets.symmetric(
+                        vertical: 12.0,
+                        horizontal: 16.0), // Adjust the padding as needed
+                  ),
+                  keyboardType: TextInputType.visiblePassword,
+                  controller: _passwordController,
+                  style: TextStyle(color: Colors.white),
+                ),
+                /*TextFieldInput(
                 hintText: 'Enter your password',
                 textInputType: TextInputType.text,
                 textEditingController: _passwordController,
                 isPass: true,
               ),*/
-              //button
-              const SizedBox(
-                height: 14,
-              ),
-
-              InkWell(
-                child: Container(
-                  child: !_isLoading
-                      ? const Text(
-                          'Log in',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      : const CircularProgressIndicator(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                        ),
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: const ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                    ),
-                    color: Color.fromARGB(255, 16, 146, 155),
-                  ),
+                //button
+                const SizedBox(
+                  height: 14,
                 ),
-                onTap: loginUser,
-              ),
-              const SizedBox(
-                height: 0,
-              ),
-              Flexible(
-                child: Container(),
-                flex: 1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: const Text(
-                      'Dont have an account?',
-                      style: TextStyle(color: Colors.white70),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 78),
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const SignupScreen(),
+
+                InkWell(
+                  child: Container(
+                    child: !_isLoading
+                        ? const Text(
+                            'Log in',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        : const CircularProgressIndicator(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    decoration: const ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
                       ),
+                      color: Color.fromARGB(255, 16, 146, 155),
                     ),
-                    child: Container(
+                  ),
+                  onTap: loginUser,
+                ),
+                const SizedBox(
+                  height: 0,
+                ),
+                Flexible(
+                  child: Container(),
+                  flex: 1,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
                       child: const Text(
-                        ' Signup.',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 16, 146, 155),
-                          fontWeight: FontWeight.bold,
+                        'Dont have an account?',
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 78),
+                    ),
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const SignupScreen(),
                         ),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Container(
+                        child: const Text(
+                          ' Signup.',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 16, 146, 155),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

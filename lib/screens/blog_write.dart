@@ -109,7 +109,8 @@ class _blog_writeState extends State<blog_write> {
               alignment: Alignment.center,
               child: CircularProgressIndicator(),
             )
-          : Container(
+          : SingleChildScrollView(
+              //avoid bottom overflow
               child: Column(
                 children: <Widget>[
                   SizedBox(
@@ -122,7 +123,7 @@ class _blog_writeState extends State<blog_write> {
                       child: selectedImage != null
                           ? Container(
                               margin: EdgeInsets.symmetric(horizontal: 16),
-                              height: 90,
+                              height: 100,
                               width: MediaQuery.of(context).size.width,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(6),
@@ -134,7 +135,7 @@ class _blog_writeState extends State<blog_write> {
                             )
                           : Container(
                               margin: EdgeInsets.symmetric(horizontal: 30),
-                              height: 125,
+                              height: 180,
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10)),
@@ -145,7 +146,7 @@ class _blog_writeState extends State<blog_write> {
                               ),
                             )),
                   SizedBox(
-                    height: 8,
+                    height: 14,
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
