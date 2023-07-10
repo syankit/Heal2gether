@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "448851986323",
+    "project_id": "heal2gether-343aa",
+    "storage_bucket": "heal2gether-343aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448851986323:android:cd0690048a8fe6f8104a66",
+        "android_client_info": {
+          "package_name": "com.example.heal2gether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448851986323-9i7ufq7dmc2pe6gc1b034f9ccqbrojtr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV-djJpPdnYWMpqjWWCxs9Jk3IqN7hBic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448851986323-9i7ufq7dmc2pe6gc1b034f9ccqbrojtr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
