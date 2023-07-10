@@ -4,8 +4,10 @@ import 'package:heal2gether/gobal.dart';
 import 'package:heal2gether/screens/blog_write.dart';
 import 'package:heal2gether/screens/contact.dart';
 import 'package:heal2gether/screens/login.dart';
+import 'package:heal2gether/screens/profile.dart';
 import 'package:heal2gether/widgets/blogcard.dart';
 import 'package:heal2gether/widgets/bloglist.dart';
+import 'package:heal2gether/screens/profile.dart';
 
 class BlogPage extends StatefulWidget {
   const BlogPage({Key? key}) : super(key: key);
@@ -43,7 +45,14 @@ class _BlogPageState extends State<BlogPage> {
                     color: Color.fromARGB(255, 0, 10, 150),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(),
+                    ),
+                  );
+                },
               ),
               ListTile(
                 title: Text(
@@ -55,7 +64,8 @@ class _BlogPageState extends State<BlogPage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.of(context).pushReplacement(
+                  Navigator.pushReplacement(
+                    context,
                     MaterialPageRoute(
                       builder: (context) => ContactUsPage(),
                     ),
