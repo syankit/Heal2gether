@@ -8,12 +8,12 @@ class ContactUsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.lightBlue[200],
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
         title: Text('Contact Us'),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
         child: Container(
           color: Colors.lightBlue[200],
           padding: EdgeInsets.symmetric(vertical: 30),
@@ -66,7 +66,7 @@ class SingleTextLogo extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 20),
         ],
       ),
     );
