@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:heal2gether/models/blog_model.dart';
 import 'package:heal2gether/screens/blog.dart';
 import 'package:heal2gether/screens/login.dart';
 import 'package:heal2gether/screens/newuser.dart';
 import 'package:heal2gether/screens/userpage.dart';
+import 'package:provider/provider.dart';
+import 'package:heal2gether/widgets/blogmap.dart';
 
 void main() async {
   WidgetsFlutterBinding
@@ -20,9 +23,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: user == null ? Newuser() : BlogPage(),
-      //home: Newuser(),
+    return MultiProvider(
+      //statemangement -->make common database -->showcase data to desired screen
+      providers: [
+        StreamProvider<List<BlogModel>>.value(
+          //syntax for register
+          value: CrudMethods().getBlogs,
+          initialData: const [],
+        )
+      ],
+      child: MaterialApp(
+        home: user == null ? Newuser() : BlogPage(),
+        //home: Newuser(),
+      ),
     );
   }
 }
