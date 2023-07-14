@@ -1,9 +1,11 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:heal2gether/models/user.dart'
-    as model; //since user fir firebase n model user clash so we use model
+import 'package:firebase_core/firebase_core.dart';
+import 'package:heal2gether/models/user.dart' as model;
+import 'package:heal2gether/resources/storage.dart'; //since user fir firebase n model user clash so we use model
 
 class Auth {
   final FirebaseFirestore _firestore = FirebaseFirestore
@@ -28,8 +30,7 @@ class Auth {
     required String password,
     required String username,
     required String bio,
-    required Uint8List file,
-    //
+    required Uint8List file, //
   }) async {
     String res = 'Some Error Happen';
     try {
@@ -44,10 +45,14 @@ class Auth {
           password: password,
         ); //authicate user =usercredential do that
 
+        String photoUrl = await StorageMethods()
+            .uploadImageToStorage('profilePics', file, false);
+
         // adding user in our database
         model.User _user = model.User(
           username: username,
           uid: cred.user!.uid,
+          photoUrl: photoUrl,
           email: email,
           bio: bio,
           followers: [],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:heal2gether/gobal.dart';
+import 'package:heal2gether/screens/contact.dart';
 import 'package:heal2gether/screens/login.dart';
 import 'package:heal2gether/screens/signup.dart';
 
@@ -31,7 +32,13 @@ class Newuser extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => ContactUsPage(),
+                  ),
+                );
+              },
               icon: Icon(
                 Icons.contact_page_outlined,
                 color: Colors.white70,
@@ -79,7 +86,7 @@ class Newuser extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const LoginScreen(),
+                      builder: (context) => LoginScreen(),
                     ),
                   );
                 },

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">448851986323-9i7ufq7dmc2pe6gc1b034f9ccqbrojtr.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">448851986323</string>
+    <string name="google_api_key" translatable="false">AIzaSyAV-djJpPdnYWMpqjWWCxs9Jk3IqN7hBic</string>
+    <string name="google_app_id" translatable="false">1:448851986323:android:cd0690048a8fe6f8104a66</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAV-djJpPdnYWMpqjWWCxs9Jk3IqN7hBic</string>
+    <string name="google_storage_bucket" translatable="false">heal2gether-343aa.appspot.com</string>
+    <string name="project_id" translatable="false">heal2gether-343aa</string>
+</resources>

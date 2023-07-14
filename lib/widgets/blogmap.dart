@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../models/blog_model.dart';
 
 class CrudMethods {
   Future<void> addData(Map<String, dynamic> blogData) async {
@@ -11,6 +13,33 @@ class CrudMethods {
   }
 
   Stream<QuerySnapshot> getData() {
+    //cont track ..notify data change
     return FirebaseFirestore.instance.collection("blogs").snapshots();
+  }
+
+  Stream<List<BlogModel>> get getBlogs {
+    //fetch
+    return FirebaseFirestore.instance.collection("blogs").snapshots().map(
+        (QuerySnapshot querySnapshot) =>
+            querySnapshot.docs //syntax//use for mapping
+                .map((DocumentSnapshot documentSnapshot) => BlogModel(
+                      uid: (documentSnapshot.data()!
+                              as Map<String, dynamic>)['uid'] ??
+                          "",
+                      authorName:
+                          (documentSnapshot.data()! as Map<String, dynamic>)[
+                                  'authorName'] ?? //?? this solve null error
+                              "", //default val besides null
+                      desc: (documentSnapshot.data()!
+                              as Map<String, dynamic>)['desc'] ??
+                          "",
+                      title: (documentSnapshot.data()!
+                              as Map<String, dynamic>)['title'] ??
+                          "",
+                      imageUrl: (documentSnapshot.data()!
+                              as Map<String, dynamic>)['imgUrl'] ??
+                          "",
+                    ))
+                .toList());
   }
 }

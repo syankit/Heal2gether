@@ -1,7 +1,11 @@
 import 'dart:typed_data';
 import 'dart:io';
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:heal2gether/screens/blog.dart';
+import 'package:heal2gether/screens/profile/profile.dart';
 import 'package:heal2gether/widgets/blogmap.dart';
 import 'package:random_x/random_x.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -39,7 +43,7 @@ class _blog_writeState extends State<blog_write> {
       // navigate to the blog screen
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => const BlogPage(),
+          builder: (context) => BlogPage(),
         ),
       );
 
@@ -56,13 +60,16 @@ class _blog_writeState extends State<blog_write> {
       String downloadUrl = await taskSnapshot.ref.getDownloadURL();
       print("this is url $downloadUrl");
 
+      print(FirebaseAuth.instance.currentUser!.uid);
+
       Map<String, dynamic> blogMap = {
+        "uid": FirebaseAuth.instance.currentUser!.uid,
         "imgUrl": downloadUrl,
         "authorName": authorName,
         "title": title,
         "desc": desc
       };
-      CrudMethods().addData(blogMap).then((result) {
+      await CrudMethods().addData(blogMap).then((result) {
         Navigator.pop(context);
       });
     } else {}
@@ -71,7 +78,7 @@ class _blog_writeState extends State<blog_write> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 8, 205, 219),
+      backgroundColor: Color.fromARGB(255, 16, 146, 155),
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +90,7 @@ class _blog_writeState extends State<blog_write> {
             Text(
               "Blog",
               style: TextStyle(
-                  fontSize: 22, color: const Color.fromARGB(255, 3, 56, 100)),
+                  fontSize: 22, color: Color.fromARGB(255, 0, 50, 90)),
             )
           ],
         ),
@@ -98,7 +105,7 @@ class _blog_writeState extends State<blog_write> {
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Icon(
                 Icons.file_upload,
-                color: Color.fromARGB(255, 2, 73, 131),
+                color: Color.fromARGB(255, 0, 24, 44),
               ),
             ),
           )
@@ -109,7 +116,8 @@ class _blog_writeState extends State<blog_write> {
               alignment: Alignment.center,
               child: CircularProgressIndicator(),
             )
-          : Container(
+          : SingleChildScrollView(
+              //avoid bottom overflow
               child: Column(
                 children: <Widget>[
                   SizedBox(
@@ -122,7 +130,7 @@ class _blog_writeState extends State<blog_write> {
                       child: selectedImage != null
                           ? Container(
                               margin: EdgeInsets.symmetric(horizontal: 16),
-                              height: 90,
+                              height: 150,
                               width: MediaQuery.of(context).size.width,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(6),
@@ -134,7 +142,7 @@ class _blog_writeState extends State<blog_write> {
                             )
                           : Container(
                               margin: EdgeInsets.symmetric(horizontal: 30),
-                              height: 125,
+                              height: 180,
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10)),
@@ -145,7 +153,7 @@ class _blog_writeState extends State<blog_write> {
                               ),
                             )),
                   SizedBox(
-                    height: 8,
+                    height: 14,
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -223,7 +231,7 @@ class _blog_writeState extends State<blog_write> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const BlogPage(),
+                          builder: (context) => BlogPage(),
                         ),
                       );
                     },
