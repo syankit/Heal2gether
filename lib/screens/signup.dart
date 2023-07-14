@@ -6,7 +6,6 @@ import 'package:heal2gether/screens/blog.dart';
 import 'package:heal2gether/screens/login.dart';
 import 'package:heal2gether/screens/newuser.dart';
 import 'package:heal2gether/utils.dart/utils.dart';
-import 'package:heal2gether/widgets/text_design.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -26,7 +25,6 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   void dispose() {
-    ///once deleted despose it
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -35,24 +33,23 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void signUpUser() async {
-    // set loading to true
     setState(() {
       _isLoading = true;
     });
 
-    // signup user using our authmethodds
     String res = await Auth().SignUpUser(
-        email: _emailController.text,
-        password: _passwordController.text,
-        username: _userController.text,
-        bio: _bioController.text,
-        file: _image!);
-    // if string returned is sucess, user has been created
+      email: _emailController.text,
+      password: _passwordController.text,
+      username: _userController.text,
+      bio: _bioController.text,
+      file: _image!,
+    );
+
     if (res == "success") {
       setState(() {
         _isLoading = false;
       });
-      // navigate to the home screen
+
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const BlogPage(),
@@ -62,47 +59,48 @@ class _SignupScreenState extends State<SignupScreen> {
       setState(() {
         _isLoading = false;
       });
-      // show the error
+
       showSnackBar(context, res);
     }
   }
 
-  selectImage() async {
-    Uint8List im = await pickImage(ImageSource.gallery);
-    // set state because we need to display the image we selected on the circle avatar
-    setState(() {
-      _image = im;
-    });
+  Future<void> selectImage() async {
+    Uint8List? im = await pickImage(ImageSource.gallery);
+
+    if (im != null) {
+      setState(() {
+        _image = im;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 34, 16, 139),
+      backgroundColor: const Color.fromARGB(255, 34, 16, 139),
       body: SafeArea(
         child: SingleChildScrollView(
-          //avoid bottom overflow
-          physics: BouncingScrollPhysics(), // Add BouncingScrollPhysics()
+          physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                //circular widget for accept & show selected file
                 Stack(
-                  //use of stack for image+ icon
                   children: [
                     _image != null
                         ? CircleAvatar(
                             radius: 54,
                             backgroundImage: MemoryImage(_image!),
-                            backgroundColor: Color.fromARGB(255, 0, 230, 247),
+                            backgroundColor:
+                                const Color.fromARGB(255, 0, 230, 247),
                           )
                         : const CircleAvatar(
                             radius: 64,
                             backgroundImage: NetworkImage(
                                 'https://i.stack.imgur.com/l60Hf.png'),
-                            backgroundColor: Color.fromARGB(255, 0, 210, 247),
+                            backgroundColor:
+                                const Color.fromARGB(255, 0, 210, 247),
                           ),
                     Positioned(
                       bottom: -10,
@@ -117,8 +115,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     )
                   ],
                 ),
-
-                //user
                 const SizedBox(
                   height: 24,
                 ),
@@ -134,14 +130,13 @@ class _SignupScreenState extends State<SignupScreen> {
                       borderSide:
                           BorderSide(color: Colors.white70, width: 20.0),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   keyboardType: TextInputType.text,
                   controller: _userController,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
-                //email
                 const SizedBox(
                   height: 24,
                 ),
@@ -156,15 +151,13 @@ class _SignupScreenState extends State<SignupScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
                       borderSide: BorderSide(color: Colors.white),
                     ),
-                    contentPadding: EdgeInsets.symmetric(
-                        vertical: 12.0,
-                        horizontal: 16.0), // Adjust the padding as needed
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   keyboardType: TextInputType.emailAddress,
                   controller: _emailController,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
-                //password
                 const SizedBox(
                   height: 24,
                 ),
@@ -180,14 +173,13 @@ class _SignupScreenState extends State<SignupScreen> {
                       borderSide:
                           BorderSide(color: Colors.white70, width: 20.0),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   keyboardType: TextInputType.visiblePassword,
                   controller: _passwordController,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
-                //bio
                 const SizedBox(
                   height: 24,
                 ),
@@ -202,68 +194,18 @@ class _SignupScreenState extends State<SignupScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
                       borderSide: BorderSide(color: Colors.white),
                     ),
-                    contentPadding: EdgeInsets.symmetric(
-                        vertical: 12.0,
-                        horizontal: 16.0), // Adjust the padding as needed
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 16.0),
                   ),
                   keyboardType: TextInputType.text,
                   controller: _bioController,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
-                /*TextFieldInput(
-                hintText: 'Enter your password',
-                textInputType: TextInputType.text,
-                textEditingController: _passwordController,
-                isPass: true,
-              ),*/
-                //button
                 const SizedBox(
                   height: 24,
                 ),
-
-                /* const SizedBox(
-                height: 10,
-              ),
-              TextFieldInput(
-                hintText: 'Enter your username',
-                textInputType: TextInputType.text,
-                textEditingController: _userController,
-                isPass: true,
-              ),
-              //email
-              const SizedBox(
-                height: 10,
-              ),
-              TextFieldInput(
-                hintText: 'Enter your email',
-                textInputType: TextInputType.emailAddress,
-                textEditingController: _emailController,
-              ),
-              //password
-              const SizedBox(
-                height: 10,
-              ),
-              TextFieldInput(
-                hintText: 'Enter your password',
-                textInputType: TextInputType.text,
-                textEditingController: _passwordController,
-                isPass: true,
-              ),
-              //bio
-              const SizedBox(
-                height: 9,
-              ),
-              TextFieldInput(
-                hintText: 'Enter your bio',
-                textInputType: TextInputType.text,
-                textEditingController: _bioController,
-              ),
-              //button
-              const SizedBox(
-                height: 10,
-              ),
-          */
                 InkWell(
+                  onTap: signUpUser,
                   child: Container(
                     child: !_isLoading
                         ? const Text(
@@ -283,22 +225,16 @@ class _SignupScreenState extends State<SignupScreen> {
                       color: Color.fromARGB(255, 16, 146, 155),
                     ),
                   ),
-                  onTap: signUpUser,
                 ),
-                //do u remb
                 const SizedBox(
                   height: 5,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      child: const Text(
-                        'Already have account!!!',
-                        style: TextStyle(color: Colors.white70),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 78),
+                    const Text(
+                      'Already have an account!!!',
+                      style: TextStyle(color: Colors.white70),
                     ),
                     GestureDetector(
                       onTap: () => Navigator.of(context).push(
