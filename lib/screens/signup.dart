@@ -82,7 +82,7 @@ class _SignupScreenState extends State<SignupScreen> {
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(40.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -116,7 +116,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 24,
+                  height: 30,
                 ),
                 TextField(
                   decoration: InputDecoration(
@@ -124,6 +124,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
+                      fontFamily: 'Glacial Indifference',
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -146,6 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
+                      fontFamily: 'Glacial Indifference',
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -167,6 +169,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
+                      fontFamily: 'Glacial Indifference',
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -189,6 +192,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
+                      fontFamily: 'Glacial Indifference',
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -210,7 +214,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: !_isLoading
                         ? const Text(
                             'Sign up',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Glacial Indifference',
+                                color: Color.fromARGB(255, 255, 255, 255)),
                           )
                         : const CircularProgressIndicator(
                             color: Color.fromARGB(255, 245, 245, 245),
@@ -227,14 +234,17 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 50,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
                       'Already have an account!!!',
-                      style: TextStyle(color: Colors.white70),
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontFamily: 'Glacial Indifference',
+                      ),
                     ),
                     GestureDetector(
                       onTap: () => Navigator.of(context).push(
@@ -248,6 +258,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           style: TextStyle(
                             color: Color.fromARGB(255, 16, 146, 155),
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'Glacial Indifference',
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 8),

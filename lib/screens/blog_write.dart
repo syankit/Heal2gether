@@ -85,12 +85,20 @@ class _blog_writeState extends State<blog_write> {
           children: <Widget>[
             Text(
               "Write",
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(
+                fontSize: 22,
+                fontFamily: 'Glacial Indifference',
+                fontWeight: FontWeight.w600,
+              ),
             ),
             Text(
               "Blog",
               style: TextStyle(
-                  fontSize: 22, color: Color.fromARGB(255, 0, 50, 90)),
+                fontSize: 22,
+                color: Color.fromARGB(255, 1, 30, 54),
+                fontFamily: 'Glacial Indifference',
+                fontWeight: FontWeight.w600,
+              ),
             )
           ],
         ),

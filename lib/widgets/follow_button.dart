@@ -35,6 +35,7 @@ class FollowButton extends StatelessWidget {
             style: TextStyle(
               color: textColor,
               fontWeight: FontWeight.bold,
+              fontFamily: 'Glacial Indifference',
             ),
           ),
           width: 250,

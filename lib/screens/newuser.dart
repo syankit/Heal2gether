@@ -22,10 +22,10 @@ class Newuser extends StatelessWidget {
             child: Text(
               'Lets Heal & Grow Together !',
               style: TextStyle(
-                color: Colors.white70,
+                color: const Color.fromARGB(226, 255, 255, 255),
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Pacifico',
-                fontSize: 15,
+                fontFamily: 'Glacial Indifference',
+                fontSize: 14.6,
               ),
             ),
           ),

@@ -44,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       //blogs
       var postSnap = await FirebaseFirestore.instance
           .collection('blogs')
-          .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+          .where('uid', isEqualTo: widget.uid)
           .get();
 
       postLen = postSnap.docs.length;
@@ -118,11 +118,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             widget.uid
                                         ? FollowButton(
                                             text: 'Sign Out',
-                                            backgroundColor:
-                                                Color.fromARGB(255, 0, 25, 167),
+                                            backgroundColor: Color.fromARGB(
+                                                255, 16, 146, 155),
                                             textColor: const Color.fromARGB(
                                                 255, 255, 255, 255),
-                                            borderColor: Colors.grey,
+                                            borderColor: Color.fromARGB(
+                                                255, 16, 146, 155),
                                             function: () async {
                                               await Auth().signOut();
                                               Navigator.of(context)
@@ -138,8 +139,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             ? FollowButton(
                                                 text: 'Unfollow',
                                                 backgroundColor: Color.fromARGB(
-                                                    255, 0, 25, 167),
-                                                textColor: Colors.black,
+                                                    255, 16, 146, 155),
+                                                textColor: Colors.white,
                                                 borderColor: Colors.grey,
                                                 function: () async {
                                                   await FireStoreMethods()
@@ -158,7 +159,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             : FollowButton(
                                                 text: 'Follow',
                                                 backgroundColor: Color.fromARGB(
-                                                    255, 0, 25, 167),
+                                                    255, 16, 146, 155),
                                                 textColor: Colors.white,
                                                 borderColor: Colors.blue,
                                                 function: () async {
@@ -191,6 +192,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           userData['username'],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'Glacial Indifference',
                           ),
                         ),
                       ),
@@ -277,6 +279,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
+            fontFamily: 'Glacial Indifference',
           ),
         ),
         Container(
@@ -287,6 +290,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               fontSize: 15,
               fontWeight: FontWeight.w400,
               color: Colors.grey,
+              fontFamily: 'Glacial Indifference',
             ),
           ),
         ),

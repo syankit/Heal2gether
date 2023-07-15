@@ -60,7 +60,7 @@ class _BlogPageState extends State<BlogPage> {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          height: MediaQuery.of(context).size.height * 0.25,
+          height: MediaQuery.of(context).size.height * 0.22,
           child: ListView(
             shrinkWrap: true,
             children: [
@@ -69,8 +69,9 @@ class _BlogPageState extends State<BlogPage> {
                   'Personal Info',
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 0, 10, 150),
+                    fontFamily: 'Glacial Indifference',
                   ),
                 ),
                 onTap: () {
@@ -91,8 +92,9 @@ class _BlogPageState extends State<BlogPage> {
                   'Contact Us',
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 0, 10, 150),
+                    fontFamily: 'Glacial Indifference',
                   ),
                 ),
                 onTap: () {
@@ -109,8 +111,9 @@ class _BlogPageState extends State<BlogPage> {
                   'Add Blog',
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                     color: Color.fromARGB(255, 0, 10, 150),
+                    fontFamily: 'Glacial Indifference',
                   ),
                 ),
                 onTap: () {
@@ -190,7 +193,7 @@ class _BlogPageState extends State<BlogPage> {
     final Size size = MediaQuery.of(context).size;
     print(size);
     blogs = Provider.of<List<BlogModel>>(
-        context); //sytax for fetching data from provider
+        context); //syntax for fetching data from provider
     blogs.forEach((b) => printBlog(b));
     return Scaffold(
       appBar: AppBar(
@@ -203,7 +206,8 @@ class _BlogPageState extends State<BlogPage> {
               'Blog Page',
               style: TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
-                fontFamily: 'Pacifico',
+                fontFamily: 'Glacial Indifference',
+                fontWeight: FontWeight.w500,
                 fontSize: 25,
               ),
             ),
@@ -254,7 +258,8 @@ class _BlogPageState extends State<BlogPage> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 100.0),
-              child: Expanded(
+              child: Container(
+                width: double.infinity,
                 child: BlogsList(),
               ),
             ),
@@ -345,8 +350,9 @@ class BlogsTile extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 25,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w800,
                     color: const Color.fromARGB(255, 255, 255, 255),
+                    fontFamily: 'Glacial Indifference',
                   ),
                 ),
                 SizedBox(height: 4),
@@ -354,6 +360,7 @@ class BlogsTile extends StatelessWidget {
                   authorName,
                   style: TextStyle(
                     color: const Color.fromARGB(255, 255, 255, 255),
+                    fontFamily: 'Glacial Indifference',
                   ),
                 )
               ],

@@ -84,6 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
+                      fontFamily: 'Glacial Indifference',
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -107,6 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
+                      fontFamily: 'Glacial Indifference',
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -136,7 +138,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: !_isLoading
                         ? const Text(
                             'Log in',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Glacial Indifference',
+                              color: Color.fromARGB(255, 255, 255, 255),
+                            ),
                           )
                         : const CircularProgressIndicator(
                             color: Color.fromARGB(255, 255, 255, 255),
@@ -163,7 +169,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     Container(
                       child: const Text(
                         'Dont have an account?',
-                        style: TextStyle(color: Colors.white70),
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontFamily: 'Glacial Indifference',
+                        ),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 78),
                     ),
@@ -179,6 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(
                             color: Color.fromARGB(255, 16, 146, 155),
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'Glacial Indifference',
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(vertical: 8),
